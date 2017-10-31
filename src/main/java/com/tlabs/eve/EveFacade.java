@@ -17,6 +17,7 @@ public final class EveFacade {
     private EveFacade() {
     }
 
+    @SuppressWarnings("unchecked")
     public static <T extends EveResponse> T parse(final EveRequest<T> request, InputStream in) throws IOException {
         if (request instanceof EveAPIRequest) {
             return (T) EveAPI.parse((EveAPIRequest) request, in);

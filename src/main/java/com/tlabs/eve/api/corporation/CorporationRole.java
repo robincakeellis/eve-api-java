@@ -1,13 +1,11 @@
 package com.tlabs.eve.api.corporation;
 
-
-
 import java.io.Serializable;
 
 public class CorporationRole implements Serializable {
 
-    private static final long serialVersionUID = -6935531269888699875L;
-
+    private static final long serialVersionUID = -7960037503816835093L;
+    
     public static final int AT_CORP = 0;
     public static final int AT_HQ = 1;
     public static final int AT_BASE = 2;
@@ -16,6 +14,10 @@ public class CorporationRole implements Serializable {
     private int type;
     private long roleID;
     private String roleName;
+
+    public CorporationRole() {
+        //
+    }
 
     public CorporationRole(int type) {
         this.type = type;

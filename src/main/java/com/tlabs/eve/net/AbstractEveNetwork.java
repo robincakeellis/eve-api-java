@@ -1,14 +1,5 @@
 package com.tlabs.eve.net;
 
-import com.tlabs.eve.EveFacade;
-import com.tlabs.eve.EveNetwork;
-import com.tlabs.eve.EveRequest;
-import com.tlabs.eve.EveResponse;
-
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -27,7 +18,18 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.tlabs.eve.EveFacade;
+import com.tlabs.eve.EveNetwork;
+import com.tlabs.eve.EveRequest;
+import com.tlabs.eve.EveResponse;
+
 public abstract class AbstractEveNetwork implements EveNetwork {
+	
     private static final Logger LOG = LoggerFactory.getLogger(AbstractEveNetwork.class);
 
     private static final HostnameVerifier hostnameVerifier = new HostnameVerifier() {
@@ -36,6 +38,16 @@ public abstract class AbstractEveNetwork implements EveNetwork {
             return true;
         }
     };
+    
+    private static String userAgentExtension;
+    
+    static {
+    	userAgentExtension = "";
+    }
+    
+    public static void setUserAgentExtension(final String newExtension) {
+    	AbstractEveNetwork.userAgentExtension = newExtension;
+    }
 
     private static SSLSocketFactory sslSocketFactory;
 
@@ -44,13 +56,16 @@ public abstract class AbstractEveNetwork implements EveNetwork {
             final SSLContext context = SSLContext.getInstance("SSL");
 
             TrustManager tm = new X509TrustManager() {
-                public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                @Override
+				public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
                 }
 
-                public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                @Override
+				public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
                 }
 
-                public X509Certificate[] getAcceptedIssuers() {
+                @Override
+				public X509Certificate[] getAcceptedIssuers() {
                     return null;
                 }
             };
@@ -93,11 +108,17 @@ public abstract class AbstractEveNetwork implements EveNetwork {
     }
 
     private static HttpURLConnection prepare(final String rootUri, final EveRequest<?> request, final String methodName) throws IOException {
+    	String ua = "eveapijava/4.6.1";
+    	if (StringUtils.isNotBlank(userAgentExtension)) {
+    		ua += " " + userAgentExtension;
+    	}
         if (LOG.isDebugEnabled()) {
-            LOG.debug(request.toURI(rootUri));
+            LOG.debug("{} as {}", request.toURI(rootUri), ua);
         }
+        
         HttpURLConnection connection = (HttpURLConnection)(new URL(request.toURI(rootUri)).openConnection());
         connection.setRequestMethod(methodName);
+        connection.setRequestProperty("user-agent", ua);
 
         if (connection instanceof HttpsURLConnection) {
             setupHttps((HttpsURLConnection)connection);
@@ -149,4 +170,5 @@ public abstract class AbstractEveNetwork implements EveNetwork {
         c.setHostnameVerifier(hostnameVerifier);
         c.setSSLSocketFactory(sslSocketFactory);
     }
+
 }

@@ -1,20 +1,18 @@
 package com.tlabs.eve.api.character;
 
-
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.tlabs.eve.api.EveAPI;
 import com.tlabs.eve.api.corporation.CorporationRole;
 import com.tlabs.eve.api.corporation.CorporationTitle;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 public final class CharacterSheet implements Serializable {
 
-    private static final long serialVersionUID = -6450367183672623211L;
+	private static final long serialVersionUID = 4592061680814130573L;
 
     public static final class JumpClone {
 
@@ -126,6 +124,7 @@ public final class CharacterSheet implements Serializable {
     private Map<Long, CharacterSkill> skillsMap;//skills per ID
     private long skillPoints = 0; //computed
     private long freeSkillPoints;//since Phoebe
+	private long cloneSkillPoints;
 
     private long lastRespecDate;
     private long lastTimedRespec;
@@ -523,4 +522,13 @@ public final class CharacterSheet implements Serializable {
             }
         }
     }
+
+    public long getCloneSkillPoints() {
+        return cloneSkillPoints;
+    }
+
+    public void setCloneSkillPoints(long cloneSkillPoints) {
+        this.cloneSkillPoints = cloneSkillPoints;
+    }
+
 }
