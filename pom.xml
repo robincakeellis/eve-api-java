@@ -5,20 +5,20 @@
 
 	<groupId>com.tlabs.eve</groupId>
 	<artifactId>eve-api-java</artifactId>
-	<version>4.6.1</version>
+	<version>4.6.2-SNAPSHOT</version>
 	<name>Eve Online API implementation in Java</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<java.version>1.7</java.version>
-		
-       <maven-compiler.version>3.5.1</maven-compiler.version>
+		<java.version>1.8</java.version>
+
+		<maven-compiler.version>3.5.1</maven-compiler.version>
 		<maven-eclipse.version>2.9</maven-eclipse.version>
 		<maven-surefire.version>2.19.1</maven-surefire.version>
 	</properties>
-	
+
 	<repositories>
 		<repository>
 			<id>Jitpack</id>
@@ -51,59 +51,59 @@
 			<version>3.4</version>
 		</dependency>
 
-       <dependency>
-           <groupId>commons-io</groupId>
-           <artifactId>commons-io</artifactId>
-           <version>2.5</version>
-       </dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
 
-       <dependency>
-           <groupId>com.squareup.retrofit2</groupId>
-           <artifactId>retrofit</artifactId>
-           <version>2.0.1</version>
-       </dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 
-       <dependency>
-           <groupId>com.squareup.retrofit2</groupId>
-           <artifactId>converter-jackson</artifactId>
-           <version>2.0.1</version>
-       </dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>converter-jackson</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 
-       <dependency>
-           <groupId>com.squareup.okhttp3</groupId>
-           <artifactId>logging-interceptor</artifactId>
-           <version>3.2.0</version>
-       </dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>logging-interceptor</artifactId>
+			<version>3.2.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.6.3</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.6.3</version>
-        </dependency>
-        
-       <dependency>
-           <groupId>org.apache.httpcomponents</groupId>
-           <artifactId>httpclient</artifactId>
-           <version>4.3.6</version>
-       </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.6.3</version>
+		</dependency>
 
-       <dependency>
-           <groupId>com.googlecode.openpojo</groupId>
-           <artifactId>openpojo</artifactId>
-           <version>0.6.2</version>
-       </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
+		</dependency>
 
-       <dependency>
-           <groupId>org.jgrapht</groupId>
-           <artifactId>jgrapht-core </artifactId>
-           <version>0.9.0</version>
-       </dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.openpojo</groupId>
+			<artifactId>openpojo</artifactId>
+			<version>0.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jgrapht</groupId>
+			<artifactId>jgrapht-core </artifactId>
+			<version>0.9.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
