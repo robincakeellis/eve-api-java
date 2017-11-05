@@ -108,7 +108,7 @@ public abstract class AbstractEveNetwork implements EveNetwork {
     }
 
     private static HttpURLConnection prepare(final String rootUri, final EveRequest<?> request, final String methodName) throws IOException {
-    	String ua = "eveapijava/4.6.2-SNAPSHOT";
+    	String ua = "eveapijava/4.6.2";
     	if (StringUtils.isNotBlank(userAgentExtension)) {
     		ua += " " + userAgentExtension;
     	}

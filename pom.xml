@@ -5,8 +5,8 @@
 
 	<groupId>com.tlabs.eve</groupId>
 	<artifactId>eve-api-java</artifactId>
-	<version>4.6.2-SNAPSHOT</version>
-	<name>Eve Online API implementation in Java</name>
+	<version>4.6.2</version>
+	<name>Eve Online API implementation in Java for EveMissioneer.com</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
